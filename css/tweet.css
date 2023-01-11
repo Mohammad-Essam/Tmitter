@@ -1,0 +1,89 @@
+.tweet
+{
+    display:flex;
+    padding: 12px;
+    gap: 12px;
+    /* margin: 12px 0; */
+    border-top:var(--border-color) solid 1px;
+}
+.tweet .avatar
+{
+    margin-left:12px;
+}
+
+.tweet-content
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.poster-info
+{
+    display: flex;
+    align-items: center;
+}
+.poster-info  :last-child
+{
+    margin-left: auto;
+}
+.tweet-controls
+{
+    max-width: 425px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -6px;
+}
+.tweet-controls .data
+{
+    display: flex;
+    align-items: center;
+}
+:is(.tweet,.tweet-controls) svg
+{
+    width: 1.25em;
+    fill: gray;
+    box-sizing: unset;
+    padding: 6px;
+    cursor: pointer;
+}
+.tweet-controls .data span
+{
+    padding: 0px 12px;
+}
+
+.control-hover-blue:hover svg
+{
+    fill: var(--primary-color);
+    background-color: var(--hover-light);
+    border-radius: 9999px;
+}
+.control-hover-blue:hover span
+{
+    color: var(--primary-color);
+}
+
+
+
+.control-hover-green:hover svg
+{
+    background-color: rgba(0,186,124,0.2);
+    fill: rgb(0,186,124);;
+    border-radius: 9999px;
+}
+.control-hover-green:hover span
+{
+    color:  rgb(0,186,124);;
+}
+
+
+.control-hover-red:hover svg
+{
+    background-color: rgba(241,24,128,0.2);
+    fill: rgb(241,24,128);
+    border-radius: 9999px;
+}
+.control-hover-red:hover span
+{
+    color: rgb(241,24,128);;
+}

@@ -1,0 +1,134 @@
+
+.footer-content{
+    width:290px;
+    display: flex;
+    justify-content: center;
+    margin:4px 12px 0px;
+    position: sticky;
+    top:4px;
+    flex-direction: column;
+    gap:24px;
+}
+.search-banner
+{
+    background-color: white;
+    width:100%;
+    position: sticky;
+    top:0;
+}
+
+/*Begin Search */
+.search-input{
+    width:100%;
+    top:4px;
+    background-color: white;
+    border-radius: var(--border-radius);
+}
+#search{
+    background-color: var(--background-color);
+    width:100%;
+    text-indent: 32px;
+    padding: 12px 16px;
+    border-radius: var(--border-radius);
+    border: var(--background-color) solid 1px;
+    font-size: 15px;
+}
+#search:focus{
+    background-color: white;
+    outline-color: var(--primary-color);
+    
+}
+
+.search-input svg
+{
+    transition: none;
+    position: absolute;
+    left: 12px;
+    top:50%;
+    transform: translateY(-50%);
+    width:20px;
+    fill:gray;
+    z-index: 0;
+}
+#search:focus ~ svg{
+    fill: var(--primary-color);
+}
+/* End Search */
+
+
+
+@media screen and (max-width: 1002px) {
+    .m1002-hide{
+        display: none;
+    }
+}
+/* End Footer  */
+
+
+
+
+.box-container
+{
+    border-radius: var(--box-border-radius);
+    background-color: var(--background-color);
+}
+.trends{
+    display: flex;
+    flex-direction: column;
+}
+.box-container > h3
+{
+    padding: 12px;
+}
+.trend{
+    padding:12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.trend-location{
+    color: var(--text-muted-color);
+    display: flex;
+    justify-content: space-between;
+}
+.trend #trend
+{
+    margin-left: auto;
+}
+/* End Trending */
+
+
+
+/* Begin Follow */
+
+.suggestion
+{
+    display: flex;
+    /* justify-content: space-between; */
+    gap:12px;
+    padding:12px 16px;
+}
+.suggestion .profile
+{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 40%;
+    text-overflow: ellipsis;
+
+}
+.suggestion div.info
+{
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.suggestion button
+{
+    background-color: black;
+    color: white;
+    padding: 8px 16px;
+    align-self: center;
+    justify-self: start;
+    border-radius: 99999px;
+}
+/* End Follow */
