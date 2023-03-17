@@ -109,4 +109,16 @@ class UserController extends Controller
     {
         //
     }
+
+    public function follow(User $user)
+    {
+        auth()->user()->follow($user);
+        return redirect('/');
+    }
+
+    public function unfollow(User $user)
+    {
+        auth()->user()->unfollow($user);
+        return redirect('/');
+    }
 }

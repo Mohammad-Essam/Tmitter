@@ -10,7 +10,7 @@
             <span>Trending in Egypt</span>
             <span>...</span>
         </div>
-        <h4 id="trend"><a href="{{ $hashtag->hashtag }}">{{ $hashtag->hashtag }}</a></h4>
+        <h4 id="trend"><a href="{{ route('hashtags.show',trim($hashtag->hashtag,'#')) }}">{{ $hashtag->hashtag }}</a></h4>
     </div>
     @endforeach
 

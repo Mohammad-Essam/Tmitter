@@ -6,18 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf" content="{{ csrf_token() }}">
     <title>Tmitter</title>
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/classes.css">
-    <link rel="stylesheet" href="css/overide.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/feeds.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/tweet.css">
-    <script src="scripts/expandTextArea.js" defer></script>
-    <script src="scripts/like.js" defer></script>
-    <script src="scripts/tweet.js" defer></script>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/classes.css">
+    <link rel="stylesheet" href="/css/overide.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/feeds.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/tweet.css">
+    <link rel="stylesheet" href="/css/register.css">
+
+    <script src="/scripts/expandTextArea.js" defer></script>
+    <script src="/scripts/like.js" defer></script>
+    <script src="/scripts/tweet.js" defer></script>
 </head>
-<body>
+
+<body >
     <x-header />
 
     <main class="feeds">
@@ -25,7 +28,10 @@
                 Home
             </h3>
 
-            <x-create-tweet :user="auth()->user()"/>
+            @if (request()->is('/'))
+                <x-create-tweet :user="auth()->user()"/>
+            @endif
+
 
             <div class="tweets" id="tweets">
                 @foreach ($tweets as $tweet )
@@ -43,12 +49,44 @@
                 </div>
             </div>
 
+            {{-- Login or Register --}}
+            <x-new_to_twitter />
+
             {{-- Hashtags --}}
             <x-trending />
+
+
             {{-- follow suggestion --}}
             <x-follow-suggestion />
 
         </aside>
     </footer>
-</body>
+
+
+     <x-controls.modal id="register">
+        @include('partials.authentication._register')
+     </x-controls.modal>
+
+     <x-controls.modal id="login">
+        @include('partials.authentication._login')
+     </x-controls.modal>
+
+     {{-- Errors messages: show them if any happened in login or register --}}
+     @if ($errors->any())
+
+        @if ($errors->login)
+        <script >
+            document.getElementById("login").style.display = 'flex'
+        </script>
+
+        @else
+        <script >
+            document.getElementById("register").style.display = 'flex'
+        </script>
+        @endif
+     @endif
+
+
+
+    </body>
 </html>

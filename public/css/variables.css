@@ -9,10 +9,10 @@
 
     --hover-primary:rgb(26,140,216);
     --hover-secondary:rgb(230,230,230);
-
     --width-btn-landing:300px;
     --heigh-btn-landing:40px;
     --border-color:rgb(207, 217, 222);
+    --border :rgb(207, 217, 222) 1px solid;
     --background-color:rgb(239, 243, 244);
     --main-light-color:white;
     --text-muted-color:#536471;
@@ -48,7 +48,7 @@ h2
 {
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
-    font-size: 15px;    
+    font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;

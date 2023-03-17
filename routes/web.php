@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\HashtagController;
 use App\Http\Controllers\TweetController;
 use App\Http\Controllers\UserController;
 use App\Models\Hashtag;
@@ -29,15 +32,22 @@ Route::any('only-i-can-get-here/bootstrap',function(){
 
 Route::get('/', [TweetController::class,'index']);
 
+Route::post('/register',[RegisteredUserController::class,'store']);
+Route::post('/login',[AuthenticatedSessionController::class,'store']);
+
+Route::get('/hashtags/{hashtag}',[HashtagController::class,'show'])->name('hashtags.show');
+
 Route::any('/tweets/{tweet}/like',[TweetController::class,'like']);
 Route::any('/tweets/{tweet}/unlike',[TweetController::class,'unlike']);
 
 Route::any('/users/login',[UserController::class,'loginOrCreate']);
 Route::any('/users/get',[UserController::class,'getUserInfo']);
 
-Route::any('tweets/store',[TweetController::class,'store']);
-Route::get('users/{id}',[UserController::class,'show']);
+Route::any('/tweets/store',[TweetController::class,'store']);
+Route::get('/users/{id}',[UserController::class,'show']);
 
+Route::get('/users/{user}/follow',[UserController::class,'follow']);
+Route::get('/users/{user}/unfollow',[UserController::class,'follow']);
 
 Route::any('tests',function()
 {

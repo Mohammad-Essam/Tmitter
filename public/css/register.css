@@ -1,0 +1,24 @@
+.register-block
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding:16px;
+
+}
+
+.register-block button
+{
+    background-color: white;
+    border: var(--border);
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    outline: none;
+    border-radius: 99999px;
+    -webkit-border-radius: 99999px;
+    -moz-border-radius: 99999px;
+    -ms-border-radius: 99999px;
+    -o-border-radius: 99999px;
+}

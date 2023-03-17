@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginOrCreateUser
+class LoginOrCreateGuest
 {
     /**
      * Handle an incoming request.
@@ -20,7 +20,7 @@ class LoginOrCreateUser
     {
         if(!auth()->user())
         {
-            $user = User::factory(1)->create()[0];
+            $user = User::factory(1)->create(['name'=>'guest','type'=>'guest'])[0];
             Auth::loginUsingId($user->id,true);
             $user->follow(User::find(1));
         }

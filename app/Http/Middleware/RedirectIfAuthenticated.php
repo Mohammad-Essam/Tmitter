@@ -19,10 +19,18 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+
+        //TODO: remove this after adding my custom guest as a gaurd
+        if(auth()->user())
+        {
+            if(auth()->user()->type == 'guest')
+                return $next($request);    
+        }
+
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
+            if (Auth::guard($guard)->check() ) {
                 return redirect(RouteServiceProvider::HOME);
             }
         }

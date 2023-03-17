@@ -31,7 +31,7 @@ class Tweet extends Model
 
     //castings
     public $casts = [
-        'created_at' => datehuman::class,
+        // 'created_at' => datehuman::class,
     ];
     protected $fillable = ['text','additional_media','user_id'];
     // public function accessor(): Attribute
@@ -41,11 +41,23 @@ class Tweet extends Model
     //         set:fn($value) => "{$value} ADDED BY SETTER",
     //     );
     // }
-    // public function time() : Attribute
-    // {
-    //     return Attribute::make(
-    //         get:fn($value) => $this->created_at->diffForHumans(),
-    //     );
-    // }
-    // public $appends = ['time'];
+    public function time() : Attribute
+    {
+        return Attribute::make(
+            get:function($value) {
+                $date = $this->created_at->diffForHumans();
+                $i = 0;
+                    $result = "";
+                    for (; $i < strlen($date); $i++) {
+                        if(is_numeric($date[$i]))
+                            $result.=$date[$i];
+                        else
+                            break;
+                    }
+                    $result .= $date[$i+1];
+                    return $result;
+            },
+        );
+    }
+    public $appends = ['time'];
 }

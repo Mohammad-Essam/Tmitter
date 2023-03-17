@@ -19,11 +19,10 @@ class DatabaseSeeder extends Seeder
 
 
         $owner = User::create(['profile_id'=>'@owner','name' => 'Mohammad Essam','email'=>"owner@example.com",'password' => 'password',
-        'avatar'=>"imgs/avatars/owner.png",
-        'cover' =>"imgs/covers/cover.jpg"
+        'avatar'=>"/imgs/avatars/owner.png",
+        'cover' =>"/imgs/covers/cover.jpg"
         ]);
         $owner->tweet("Hello, I'm the owner of this site.\nthis site is still under construction.\nRight now you can post text tweets and like tweets");
         $owner->tweet("عارف لما تعمل تويتر في البيت؟\n دي بتكون النتيجه");
-
     }
 }

@@ -23,17 +23,19 @@
 
     <main class="feeds">
             <h3 class="banner profile-banner">
-                <svg viewBox="0 0 24 24" aria-hidden="true" ><g><path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"></path></g></svg>
+                <a href="/">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" ><g><path d="M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z"></path></g></svg>
+                </a>
                 <div class="profile-name">
-                    <h3>dude</h3>
-                    <span class="muted">tweets_number</span>
+                    <h3>{{ $user->name }}</h3>
+                    <span class="muted">Tweets: {{ $user->tweets()->count() }}</span>
                 </div>
             </h3>
 
             <x-profile-header :user="$user" />
 
             <div class="tweets" id="tweets">
-                @foreach ($user->tweets as $tweet )
+                @foreach ($user->tweets->sortByDesc('created_at') as $tweet )
                     <x-tweet :tweet="$tweet" />
                 @endforeach
             </div>
@@ -49,6 +51,10 @@
                 </div>
             </div>
 
+            {{-- follow suggestion --}}
+            <x-follow-suggestion />
+
+{{--
             <div class="suggestions box-container">
                 <h3>You may like</h3>
 
@@ -60,9 +66,10 @@
                     </div>
                     <button><h4>Follow</h4></button>
                 </div>
-            </div>
+            </div> --}}
 
-
+            <x-trending />
+{{--
             <div class="box-container trends">
                 <h3>What's happening</h3>
                 <div class="trend">
@@ -80,7 +87,7 @@
                     </div>
                     <h4 id="trend">تريند_عادي</h4>
                 </div>
-            </div>
+            </div> --}}
 
 
 

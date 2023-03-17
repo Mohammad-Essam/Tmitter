@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hashtag;
+use App\Models\Tweet;
 use Illuminate\Http\Request;
 
 class HashtagController extends Controller
@@ -13,7 +15,7 @@ class HashtagController extends Controller
      */
     public function index()
     {
-        //
+        $hashtags=  Hashtag::withCount('tweets')->orderBy('tweets_count','desc')->orderBy('created_at')->limit(5)->get();
     }
 
     /**
@@ -45,7 +47,21 @@ class HashtagController extends Controller
      */
     public function show($id)
     {
-        //
+        $hashtag = "#".$id;
+        $hashtagModel = Hashtag::findOrFail($hashtag);
+        $tweets = $hashtagModel->tweets;
+        
+        //this didn't work fortunatly
+        //if it worked then the whole web app is vulnerable to stored xss lol
+        // $tweets->map(
+        //     function ($tweet) use ($hashtag)
+        //     {
+        //         $text = str_replace($hashtag, "<strong>$hashtag</strong>",$tweet->text);
+        //         $tweet->text = $text;
+        //         return $tweet;
+        //     }
+        // );
+        return view('index',['tweets' => $tweets]);
     }
 
     /**

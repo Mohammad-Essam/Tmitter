@@ -98,6 +98,7 @@ class User extends Authenticatable
         'password',
         'avatar',
         'cover',
+        'profile_id',
     ];
 
     /**

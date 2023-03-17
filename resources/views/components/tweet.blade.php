@@ -6,7 +6,7 @@
         <div class="poster-info">
             <a href="/users/{{$tweet->user->profile_id}}"><h4>{{$tweet->user->name}}</h4></a>&nbsp;
             <p class="muted">{{$tweet->user->profile_id}}</p>&nbsp;<span class="muted">.</span>&nbsp;
-            <span class="muted">{{ $tweet->created_at }}</span>
+            <span class="muted">{{ $tweet->time }}</span>
             <div class="control-hover-blue"><svg viewBox="0 0 24 24" aria-hidden="true" ><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg></div>
         </div>
 

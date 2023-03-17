@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Casts\datehuman;
 use App\Models\Tweet;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +18,7 @@ class TweetController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('LoginOrCreateUser');
+        $this->middleware('LoginOrCreateGuest');
     }
 
     public function index()
@@ -26,12 +28,15 @@ class TweetController extends Controller
         foreach ($user->following as $followed) {
             $tweets = $tweets->merge($followed->tweets);
         }
-            return view('index',['tweets' => $tweets->sortBy('created_at')]);
+            //this doesnt' work because created at is a string of 1h and 2d and so on.
+            return view('index',['tweets' => $tweets->sortByDesc('created_at')]);
     }
 
     public function like(Tweet $tweet)
     {
         $user = auth()->user();
+        $user = User::find($user->id);
+
         if($user)
         {
             $success = $user->like($tweet);
@@ -41,7 +46,10 @@ class TweetController extends Controller
 
     public function unlike(Tweet $tweet)
     {
+        //
         $user = auth()->user();
+        $user = User::find($user->id);
+
         if($user)
         {
             $success = $user->unlike($tweet);
@@ -70,9 +78,10 @@ class TweetController extends Controller
         // return "tell me what you whant? \n what you really really want.";
         // dd($request);
         // dd($request);
-        $tweet = auth()->user()->tweet($request->tweet);
-        return view('components.tweet',['tweet' => $tweet]);
-
+        $user = auth()->user();
+        $user = User::find($user->id);
+        $tweet = $user->tweet($request->tweet);
+        return response(view('components.tweet',['tweet' => $tweet]),201);
     }
 
     /**
