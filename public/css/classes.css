@@ -3,6 +3,10 @@ img.avatar
     height: var(--avatar-size);
     width: var(--avatar-size);
     border-radius: 99999px;
+    -webkit-border-radius: 99999px;
+    -moz-border-radius: 99999px;
+    -ms-border-radius: 99999px;
+    -o-border-radius: 99999px;
 }
 .hidden
 {
@@ -29,18 +33,33 @@ border: none;
 
 .btn-follow
 {
+    color: white;
     padding: 8px 16px;
     font-weight: 600;
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    background-color: var(--black-color);
+
+}
+.btn-unfollow
+{
+    cursor: pointer;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.438);
+    color: var(--black-color-tinted);
+    background-color: white;
 }
 
-.btn-secondary:hover
+.btn-secondary:hover, .btn-follow:hover
 {
     background-color: var(--black-color-tinted);
 }
 
-.hover-light:hover
+.hover-light:hover, .btn-unfollow:hover
 {
     background-color: var(--hover-light);
     border-radius: 9999px;

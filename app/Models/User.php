@@ -61,6 +61,11 @@ class User extends Authenticatable
         return false;
     }
 
+    public function doFollow($id)
+    {
+        $follow = DB::table('following_relation')->where('follower_id',$this->id)->where('followed_id',$id)->first();
+        return (bool)$follow;
+    }
     public function like(Tweet $tweet)
     {
         $like = DB::table('user_like_tweet')->where('tweet_id',$tweet->id)->where('user_id',$this->id);

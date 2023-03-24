@@ -47,7 +47,7 @@ Route::any('/tweets/store',[TweetController::class,'store']);
 Route::get('/users/{id}',[UserController::class,'show']);
 
 Route::get('/users/{user}/follow',[UserController::class,'follow']);
-Route::get('/users/{user}/unfollow',[UserController::class,'follow']);
+Route::get('/users/{user}/unfollow',[UserController::class,'unfollow']);
 
 Route::any('tests',function()
 {

@@ -1,8 +1,4 @@
-@props(
-    [
-        'users' => \App\Models\User::inRandomOrder()->limit(2)->get(),
-    ]
-)
+@props(['users'])
 <div class="suggestions box-container">
     <h3>who to follow</h3>
 
