@@ -48,6 +48,7 @@ Route::get('/users/{id}',[UserController::class,'show']);
 
 Route::get('/users/{user}/follow',[UserController::class,'follow']);
 Route::get('/users/{user}/unfollow',[UserController::class,'unfollow']);
+Route::get('/users/{user}/followOrUnfollow',[UserController::class,'followOrUnfollow']);
 
 Route::any('tests',function()
 {

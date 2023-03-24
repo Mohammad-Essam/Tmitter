@@ -27,20 +27,42 @@
 </span> --}}
 
 @if (auth()->user()->doFollow($id))
-<a onclick="fetch('/users/{{$id}}/unfollow').then(x =>{
-    console.log(x.text())
-    this.classList.remove('btn-unfollow');
-    this.classList.add('btn-follow');
-    this.innerHTML='Follow';
+<a data-follow="{{(bool)auth()->user()->doFollow($id)}}" onclick="fetch('/users/{{$id}}/followOrUnfollow').then(x =>{
+    if(this.dataset.follow)
+    {
+        this.classList.remove('btn-unfollow');
+        this.classList.add('btn-follow');
+        this.innerHTML='Follow';
+        this.dataset.follow = ''
+    }
+    else
+    {
+        this.classList.remove('btn-follow');
+        this.classList.add('btn-unfollow');
+        this.innerHTML='unfollow';
+        this.dataset.follow = '1'
+    }
+
     })"
     class="btn btn-unfollow">Unfollow</a>
 @else
-<a onclick="fetch('/users/{{$id}}/follow').then(x =>
+<a data-follow="{{(bool)auth()->user()->doFollow($id)}}" onclick="fetch('/users/{{$id}}/followOrUnfollow').then(x =>
 {
-    this.classList.remove('btn-follow');
-    this.classList.add('btn-unfollow');
-    this.innerHTML='unfollow';
-    })"
+    if(this.dataset.follow)
+    {
+        this.classList.remove('btn-follow');
+        this.classList.add('btn-unfollow');
+        this.innerHTML='unfollow';
+        this.dataset.follow = '';
+    }
+    else
+    {
+        this.classList.add('btn-unfollow');
+        this.classList.remove('btn-follow');
+        this.innerHTML='Unfollow';
+        this.dataset.follow = '1';
+    }
+})"
     class="btn btn-follow">Follow</a>
 
 @endif

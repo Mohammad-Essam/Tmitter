@@ -121,4 +121,11 @@ class UserController extends Controller
         auth()->user()->unfollow($user);
         return redirect('/');
     }
+    public function followOrUnfollow(User $user)
+    {
+        auth()->user()->doFollow($user->id)?auth()->user()->unfollow($user):auth()->user()->follow($user);
+        return redirect('/');
+    }
+
+
 }
