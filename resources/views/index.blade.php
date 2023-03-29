@@ -18,6 +18,8 @@
     <script src="/scripts/expandTextArea.js" defer></script>
     <script src="/scripts/like.js" defer></script>
     <script src="/scripts/tweet.js" defer></script>
+    <script src="/scripts/follow.js"></script>
+
 </head>
 
 <body >
