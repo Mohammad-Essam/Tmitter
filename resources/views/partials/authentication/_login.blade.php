@@ -30,17 +30,17 @@
 
 <form class="register" action="/login" method="post">
 
-        @if ($errors->any())
+        @if ($errors->login->all())
         <div style="color:red">
             <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                @foreach ($errors->login->all() as $key => $error)
+                <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
         @endif
     @csrf
-    <input placeholder="email" type="email" name="email" id="email">
-    <input placeholder="password" type="password" name="password" id="password">
+    <input placeholder="email" type="email" name="login_email" id="email">
+    <input placeholder="password" type="password" name="login_password" id="password">
     <input type="submit" value="login" class="btn btn-primary">
 </form>

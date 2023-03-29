@@ -72,21 +72,15 @@
      </x-controls.modal>
 
      {{-- Errors messages: show them if any happened in login or register --}}
-     @if ($errors->any())
-
-        @if ($errors->login)
+     @if ((bool)$errors->login->all())
         <script >
             document.getElementById("login").style.display = 'flex'
         </script>
-
-        @else
+        @elseif ($errors->any())
         <script >
             document.getElementById("register").style.display = 'flex'
         </script>
-        @endif
      @endif
-
-
 
     </body>
 </html>

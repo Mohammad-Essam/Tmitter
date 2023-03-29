@@ -37,19 +37,23 @@
 
 <form class="register" action="/register" method="post" enctype="multipart/form-data">
 
-        @if ($errors->any())
+
+    @if ($errors->any())
         <div style="color:red">
             <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                @foreach ($errors->getMessages() as $key => $error)
+                @if (!Str::contains($key, 'login'))
+                <li>{{ $error[0] }}</li>
+                @endif
                 @endforeach
             </ul>
         </div>
-        @endif
+    @endif
+
 
     @csrf
     <div class="avatar">
-        <img class="avatar-placeholder" alt="avatar"  id="placeholder">
+        <img class="avatar-placeholder"   id="placeholder">
     </div>
 
     <div style="position: relative" class="upload-btn">

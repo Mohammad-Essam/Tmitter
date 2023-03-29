@@ -7,14 +7,14 @@
 )
 <style>
     .modal{
-        position: absolute;
+        position: fixed;
         z-index: 10;
         display: none;
         align-items: center;
         justify-content: center;
         background-color: rgba(0,0,0, 0.4);
         width: 100vw;
-        height: 100vh;
+        height: 100%;
     }
     .modal::backdrop
     {
@@ -27,8 +27,8 @@
         background-color: white;
         border-radius: 10px;
     }
-
 </style>
+
 <div class="modal" onclick="this.style.display = 'none';" id="{{ $id }}">
     <div class="content" onclick="event.stopPropagation()">
         {{ $slot }}
