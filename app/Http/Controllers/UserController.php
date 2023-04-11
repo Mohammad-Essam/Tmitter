@@ -73,6 +73,7 @@ class UserController extends Controller
     {
         //eager loading the tweets
         $user = User::where('profile_id',$profile_id)->with("tweets")->first();
+        if(!$user) abort(404,'No User with this id');
         return view('profile',['user' => $user]);
     }
 

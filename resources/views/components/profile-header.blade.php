@@ -2,9 +2,9 @@
 
 <div class="profile-header">
     <div class="profile-header-image">
-        <img class="header-image" src="\{{ $user->cover }}" alt="">
+        <img class="header-image" src="{{ $user->cover }}" alt="">
         <div class="avatar">
-            <img class="avatar-image"  src="/{{ $user->avatar }}" alt="avatar" >
+            <img class="avatar-image"  src="{{ $user->avatar }}" alt="avatar" >
         </div>
     </div>
     <div class="profile-information">

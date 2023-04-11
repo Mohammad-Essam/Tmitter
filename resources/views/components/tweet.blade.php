@@ -1,7 +1,7 @@
 {{-- @props(['tweet' => App\Models\Tweet::find(1)]) --}}
 
 <div class="tweet">
-    <img src="/{{$tweet->user->avatar}}" alt="avatar" class="avatar" />
+    <img src="{{$tweet->user->avatar}}" alt="avatar" class="avatar" />
     <div class="tweet-content">
         <div class="poster-info">
             <a href="/users/{{$tweet->user->profile_id}}"><h4>{{$tweet->user->name}}</h4></a>&nbsp;

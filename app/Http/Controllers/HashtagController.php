@@ -50,17 +50,6 @@ class HashtagController extends Controller
         $hashtag = "#".$id;
         $hashtagModel = Hashtag::findOrFail($hashtag);
         $tweets = $hashtagModel->tweets;
-        
-        //this didn't work fortunatly
-        //if it worked then the whole web app is vulnerable to stored xss lol
-        // $tweets->map(
-        //     function ($tweet) use ($hashtag)
-        //     {
-        //         $text = str_replace($hashtag, "<strong>$hashtag</strong>",$tweet->text);
-        //         $tweet->text = $text;
-        //         return $tweet;
-        //     }
-        // );
         return view('index',['tweets' => $tweets]);
     }
 

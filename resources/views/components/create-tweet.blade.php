@@ -1,6 +1,6 @@
 @props(['user'])
             <div class="make-tweet">
-                <img height="44px" src="/{{$user->avatar }}" alt="avatar" class="avatar">
+                <img height="44px" src="{{$user->avatar }}" alt="avatar" class="avatar">
                 <div class="create-tweet">
                     <textarea dir="auto" name="" id="tweetArea" placeholder="What's happening?"></textarea>
                     <div class="additional">

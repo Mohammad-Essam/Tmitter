@@ -18,6 +18,16 @@ Route::any('only-i-can-get-here/bootstrap',function(){
     echo "<h2>my work is done.</h2>";
 });
 
+
+Route::any('only-i-can-get-here/refresh',function(){
+    echo "<h1> i am here ok?</h1>";
+    $exitCode = Artisan::call('migrate:refresh');
+    Artisan::call('db:seed');
+    echo "<h2>my work is done.</h2>";
+});
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
