@@ -14,11 +14,13 @@ class Weather extends Component
      */
     public $city;
     public $temperature;
-    public $country_data;
+    public $location_data;
     public function __construct()
     {
+
+        $client = new \GuzzleHttp\Client();
         //first get the user ip
-        $ip = request()->ip();
+        $ip = $_SERVER['REMOTE_ADDR'];
         if($ip == '127.0.0.1')
         {
             //random ip that reads the weather of egypt
@@ -26,11 +28,15 @@ class Weather extends Component
             $ip = '41.35.145.12';
         }
         //then get the country of the user and the latitude and longitude
-        $this->country_data = Http::get("http://ip-api.com/json/$ip");
-        $lat = $this->country_data->json()['lat'];
-        $lon = $this->country_data->json()['lon'];
-        $response = Http::get("https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$lon&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m");
-        $this->temperature = $response->json()['current_weather']['temperature'];
+        $res = $client->request('GET', "http://ip-api.com/json/$ip");
+        $this->location_data = json_decode($res->getBody()->getContents());
+
+        $lat = $this->location_data->lat;
+        $lon = $this->location_data->lon;
+
+        $response = $client->request('GET', "https://api.open-meteo.com/v1/forecast?latitude=$lat&longitude=$lon&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m");
+        $responseJson =  json_decode($response->getBody()->getContents());
+        $this->temperature = $responseJson->current_weather->temperature;
     }
 
     /**
