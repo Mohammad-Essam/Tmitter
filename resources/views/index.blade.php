@@ -61,6 +61,11 @@
             {{-- follow suggestion --}}
             <x-follow-suggestion />
 
+
+            {{-- Weather --}}
+            <x-weather />
+
+
         </aside>
     </footer>
 
