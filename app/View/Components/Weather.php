@@ -19,6 +19,12 @@ class Weather extends Component
     {
         //first get the user ip
         $ip = request()->ip();
+        if($ip == '127.0.0.1')
+        {
+            //random ip that reads the weather of egypt
+            //because the api doesn't work on localhost
+            $ip = '41.35.145.12';
+        }
         //then get the country of the user and the latitude and longitude
         $this->country_data = Http::get("http://ip-api.com/json/$ip");
         $lat = $this->country_data->json()['lat'];
