@@ -1,10 +1,15 @@
 function tweet(context){
+
     let xhr = new XMLHttpRequest()
     let url = `/tweets/store`
     xhr.open('POST', url, true)
     xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
     xhr.setRequestHeader('X-CSRF-TOKEN',document.getElementsByName('csrf')[0].content)
     data = {"tweet": context.parentElement.parentElement.childNodes[1].value};
+    if(data['tweet'] == null || data['tweet'] == '') {
+        alert('cant send empty tweet');
+        return
+    }
     console.log(data);
     xhr.send(JSON.stringify(data));
     xhr.onload = function () {
@@ -23,8 +28,6 @@ function tweet(context){
         else if(xhr.status == 200)
         {
             console.log('am not gonna cleaning')
-            //nothing happened in dataqbase.
-            // alert("connection error")
         }
     }
 }

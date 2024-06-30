@@ -23,8 +23,8 @@ return new class extends Migration
             $table->enum('type',['guest','user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
-            $table->text('avatar')->default('imgs/avatars/1.png')->nullable();
-            $table->text('cover')->default('imgs/covers/cover.jpg')->nullable();
+            $table->string('avatar')->default('imgs/avatars/1.png')->nullable();
+            $table->string('cover')->default('imgs/covers/cover.jpg')->nullable();
         });
     }
 

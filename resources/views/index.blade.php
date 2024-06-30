@@ -19,7 +19,7 @@
     <script src="/scripts/like.js" defer></script>
     <script src="/scripts/tweet.js" defer></script>
     <script src="/scripts/follow.js"></script>
-
+    <script src="/scripts/DisableAndEnableTweetBtn.js" defer></script>
 </head>
 
 <body >
