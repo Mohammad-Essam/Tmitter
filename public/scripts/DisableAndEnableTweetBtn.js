@@ -1,4 +1,4 @@
-document.getElementById("tweetArea").addEventListener('input', function() {
+document.getElementById("tweetArea").addEventListener('input', function(e) {
    if(this.value.length > 0)
     {
         document.getElementById("tweetBtn").disabled = false;   

@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $owner->tweet("Hello, I'm the owner of this site.\nthis site is still under construction.\nRight now you can post text tweets and like tweets");
-        $owner->tweet("عارف لما تعمل تويتر في البيت؟\n دي بتكون النتيجه");
         $owner->tweet("long live #HomeMadeTwitter");
 
 
@@ -34,7 +33,12 @@ class DatabaseSeeder extends Seeder
         ]);
         $hamada->tweet("lorem ipsum is the best thing ever #Best_Thing_Ever");
 
+        $salama = User::create(['profile_id'=>'@Salama','name' => 'Salama Hamdy','email'=>"salama@example.com",'password' => 'password',
+        'avatar'=>"imgs/avatars/5.png",
+        'cover' =>"imgs/covers/cover.jpg"
+        ]);
         
+        $salama->tweet(" #HomeMadeTwitter منورين يا شباب ");
 
     }
 }
